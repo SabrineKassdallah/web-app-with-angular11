@@ -1,6 +1,10 @@
 <div class="container" *ngIf="productFormGroup">
     <form [formGroup]="productFormGroup">
         <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" formControlName="id">
+        </div>
+        <div class="form-group">
             <label>Name</label>
             <input type="text" class="form-control" formControlName="name" 
             [ngClass]="{'is-invalid':submitted && productFormGroup.controls.name.errors}">
@@ -24,6 +28,6 @@
             <label>Available</label>
             <input type="checkbox" formControlName="available" class="form-check">
         </div><br> 
-        <button class="btn btn-success" (click)="onSaveProduct()">Save</button>
+        <button class="btn btn-success" (click)="onUpdateProduct()">Update</button>
     </form>
 </div>
