@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product } from 'src/app/model/product.model';
 import { ProductsService } from 'src/app/services/products.service';
-import { AppDataState, DataStateEnum } from 'src/app/state/product.state';
+import { ActionEvent, AppDataState, DataStateEnum, ProductActionsTypes } from 'src/app/state/product.state';
 import { catchError, map, startWith} from 'rxjs/operators'
 import { Router } from '@angular/router';
 
@@ -96,6 +96,25 @@ export class ProductsComponent implements OnInit {
 
   onEdit(p: Product){
     this.router.navigateByUrl("/editProduct/"+p.id)
+
+  }
+
+  onActionEvent($event: ActionEvent){
+    // if($event == "All_Products"){
+    //   this.onGetAllProducts();
+    // }
+
+    switch($event.type){
+      case  ProductActionsTypes.GET_ALL_PRODUCTS: this.onGetAllProducts();break; 
+      case  ProductActionsTypes.GET_SELECTED_PRODUCTS: this.onGetSelectedProducts();break; 
+      case  ProductActionsTypes.GET_AVAILABLE_PRODUCTS: this.onGetAvailableProducts();break; 
+      case  ProductActionsTypes.SEARCH_PRODUCTS: this.onSearch($event.payload);break; 
+
+
+
+
+    }
+
 
   }
 

@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductEditComponent implements OnInit {
   productId:number
   productFormGroup?:FormGroup;
-  private submitted:boolean=false;
+  submitted:boolean=false;
   constructor(private activatedRoute:ActivatedRoute, 
     private productService:ProductsService, private fb:FormBuilder) { 
     this.productId = activatedRoute.snapshot.params.id;
