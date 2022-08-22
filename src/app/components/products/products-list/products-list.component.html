@@ -1,1 +1,28 @@
-<p>products-list works!</p>
+<div class="container">
+    <ng-container *ngIf="productsInput$ | async as result" [ngSwitch]="result.dataState">
+
+        <ng-container *ngSwitchCase="DataStateEnum.LOADING">loading ....</ng-container>
+
+        <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+            <div class="alert-danger"> {{result.errorMessage}}</div>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Price</th><th>Quantity</th><th>Selected</th><th>Available</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <app-product-item
+                 [product]="p" (eventEmitter)="onActionEvent($event)" 
+                 *ngFor="let p of result.data" style="display: contents"> </app-product-item> <!-- surveiller un objet observable-->
+               
+            </tbody>
+            </table>    
+        </ng-container>
+    
+    </ng-container>
+</div>

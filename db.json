@@ -5,13 +5,13 @@
       "name": "Computer",
       "price": 4300,
       "quantity": "900",
-      "selected": true,
+      "selected": false,
       "available": true
     },
     {
       "id": 2,
       "name": "Printer",
-      "price": 4300,
+      "price": "4500",
       "quantity": 600,
       "selected": true,
       "available": true
@@ -21,7 +21,7 @@
       "name": "Smartphone",
       "price": 4300,
       "quantity": 600,
-      "selected": true,
+      "selected": false,
       "available": true
     },
     {
@@ -31,14 +31,6 @@
       "selected": true,
       "available": true,
       "id": 4
-    },
-    {
-      "name": "ssss",
-      "price": 0,
-      "quantity": 0,
-      "selected": false,
-      "available": true,
-      "id": 5
     }
   ]
 }

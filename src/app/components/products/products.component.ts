@@ -109,10 +109,11 @@ export class ProductsComponent implements OnInit {
       case  ProductActionsTypes.GET_SELECTED_PRODUCTS: this.onGetSelectedProducts();break; 
       case  ProductActionsTypes.GET_AVAILABLE_PRODUCTS: this.onGetAvailableProducts();break; 
       case  ProductActionsTypes.SEARCH_PRODUCTS: this.onSearch($event.payload);break; 
-
-
-
-
+      case  ProductActionsTypes.NEW_PRODUCT: this.onNewProduct();break; 
+      case  ProductActionsTypes.SELECT_PRODUCT: this.onSelect($event.payload);break; 
+      case  ProductActionsTypes.DELETE_PRODUCT: this.onDelete($event.payload);break;
+      case  ProductActionsTypes.EDIT_PRODUCT: this.onEdit($event.payload);break; 
+ 
     }
 
 
