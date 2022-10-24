@@ -12,8 +12,8 @@ export class ProductsService {
   constructor(private http:HttpClient) { }
 
   getAllProducts():Observable<Product[]>{
-    let host = environment.host;
-    return this.http.get<Product[]>(host+"/products")
+    // let host = environment.host;
+    return this.http.get<Product[]>('/api/products')
   }
 
 
@@ -40,14 +40,14 @@ export class ProductsService {
   }
 
   deleteProduct(product: Product):Observable<void>{
-    let host = environment.host;
+    // let host = environment.host;
     product.selected = !product.selected
-    return this.http.delete<void>(host+"/products/" +product.id);
+    return this.http.delete<void>("/api/delete_product/" +product.id);
   }
 
   save(product: Product):Observable<Product>{
-    let host = environment.host;
-    return this.http.post<Product>(host+"/products",product);
+    // let host = environment.host;
+    return this.http.post<Product>("/api/products",product);
   }
 
   getProduct(id:number):Observable<Product>{
@@ -56,7 +56,7 @@ export class ProductsService {
   }
 
   updateProduct(product:Product):Observable<Product>{
-    let host = environment.host;
-    return this.http.put<Product>(host+"/products/"+product.id,product);
+    // let host = environment.host;
+    return this.http.put<Product>("/api/update_product/" +product.id,product);
   }
 }

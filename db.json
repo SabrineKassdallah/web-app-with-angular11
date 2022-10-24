@@ -33,9 +33,9 @@
       "available": true
     },
     {
-      "name": "somsom",
-      "price": "22",
-      "quantity": "0",
+      "name": "prod_test",
+      "price": "200",
+      "quantity": "2",
       "selected": true,
       "available": true,
       "id": 5
