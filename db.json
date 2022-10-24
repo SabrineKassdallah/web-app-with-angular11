@@ -18,19 +18,27 @@
     },
     {
       "id": 3,
-      "name": "Smartphone",
-      "price": 4300,
-      "quantity": 600,
-      "selected": false,
-      "available": true
-    },
-    {
       "name": "prod",
       "price": "300",
       "quantity": "2",
       "selected": true,
+      "available": true
+    },
+    {
+      "id": 4,
+      "name": "prod",
+      "price": "300",
+      "quantity": "2",
+      "selected": true,
+      "available": true
+    },
+    {
+      "name": "somsom",
+      "price": "22",
+      "quantity": "0",
+      "selected": true,
       "available": true,
-      "id": 4
+      "id": 5
     }
   ]
 }
