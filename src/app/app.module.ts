@@ -13,6 +13,8 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { ProductsNavBarComponent } from './components/products/products-nav-bar/products-nav-bar.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -32,7 +34,10 @@ import { ProductItemComponent } from './components/products/product-item/product
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

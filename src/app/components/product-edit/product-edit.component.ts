@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { map, startWith, catchError } from 'rxjs/operators';
+import { Product } from 'src/app/model/product.model';
+import { NotificationService } from 'src/app/services/notification.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { AppDataState, DataStateEnum } from 'src/app/state/product.state';
 
 @Component({
   selector: 'app-product-edit',
@@ -12,8 +17,9 @@ export class ProductEditComponent implements OnInit {
   productId:number
   productFormGroup?:FormGroup;
   submitted:boolean=false;
+  all_products$: Observable <AppDataState<Product[]>> | null=null;
   constructor(private activatedRoute:ActivatedRoute, 
-    private productService:ProductsService, private fb:FormBuilder) { 
+    private productService:ProductsService, private fb:FormBuilder, private notifyService: NotificationService) { 
     this.productId = activatedRoute.snapshot.params.id;
   }
 
@@ -31,9 +37,15 @@ export class ProductEditComponent implements OnInit {
   }
 
   onUpdateProduct(){
-    this.productService.updateProduct(this.productFormGroup?.value).subscribe(data=>{
-      alert("Success Product updated")
-    });
+    this.productService.updateProduct(this.productFormGroup?.value).subscribe(
+      data => {
+        this.notifyService.showSuccess(data["successMessage"], "Succès")
+
+      },
+      error => {
+        this.notifyService.showError(error.error.message, "failed")
+      });
+    
 
   }
 

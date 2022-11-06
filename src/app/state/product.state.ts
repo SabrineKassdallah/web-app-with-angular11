@@ -27,4 +27,5 @@ export interface AppDataState<T> {
     data?:T,
     errorMessage?:string
 
+
 }
