@@ -38,7 +38,7 @@ export class ProductsService {
     return this.http.put<Product>(host+"/products/" +product.id,product);
   }
 
-  deleteProduct(product: Product):Observable<void>{
+  deleteProduct(product: Product):Observable<any>{
     product.selected = !product.selected
     return this.http.delete<void>("/api/delete_product/" +product.id);
   }

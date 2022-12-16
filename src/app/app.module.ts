@@ -15,6 +15,9 @@ import { ProductsListComponent } from './components/products/products-list/produ
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { ToastrModule } from 'ngx-toastr';
     ProductEditComponent,
     ProductsNavBarComponent,
     ProductsListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot()
 
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

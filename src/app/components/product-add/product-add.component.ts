@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-product-add',
@@ -11,7 +12,7 @@ export class ProductAddComponent implements OnInit {
    productFormGroup?: FormGroup
    submitted:boolean=false;
 
-  constructor(private fb:FormBuilder, private productService: ProductsService  ) { }
+  constructor(private fb:FormBuilder, private productService: ProductsService, private notifyService: NotificationService  ) { }
 
   ngOnInit(): void {
     this.productFormGroup = this.fb.group({
@@ -26,9 +27,15 @@ export class ProductAddComponent implements OnInit {
   onSaveProduct(){
     this.submitted=true;
     if(this.productFormGroup?.invalid)return;
-    this.productService.save(this.productFormGroup?.value).subscribe(data =>{
-      alert("Success Saving product");
-    });
+    this.productService.save(this.productFormGroup?.value).subscribe(
+      data =>{
+
+        this.notifyService.showSuccess(data["successMessage"], "Create Success")
+
+      },
+      error => {
+        this.notifyService.showError(error.error.message, "failed")
+      });
   }
 
 }

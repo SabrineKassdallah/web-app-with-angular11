@@ -5,6 +5,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { ActionEvent, AppDataState, DataStateEnum, ProductActionsTypes } from 'src/app/state/product.state';
 import { catchError, map, startWith} from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 export class ProductsComponent implements OnInit {
     products$: Observable <AppDataState<Product[]>> | null=null; // soit un tableau de products ,soit prend valeur null s'il n' y a pas des products
     readonly DataStateEnum = DataStateEnum;
-  constructor(private productService:ProductsService, private router: Router) { }
+  constructor(private productService:ProductsService, private router: Router, private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -85,7 +86,8 @@ export class ProductsComponent implements OnInit {
   onDelete(p: Product){
     let v= confirm("Etes vous sure ?")
     if (v==true)
-    this.productService.deleteProduct(p).subscribe(data=>{
+    this.productService.deleteProduct(p).subscribe((response)=>{
+      this.notifyService.showSuccess(response["message"], "Succès");
       this.onGetAllProducts();
     })
   }

@@ -39,7 +39,7 @@ export class ProductEditComponent implements OnInit {
   onUpdateProduct(){
     this.productService.updateProduct(this.productFormGroup?.value).subscribe(
       data => {
-        this.notifyService.showSuccess(data["successMessage"], "Succès")
+        this.notifyService.showSuccess(data["successMessage"], "Update Success")
 
       },
       error => {
